@@ -29,4 +29,17 @@ public abstract class MisArrays {
 	    }
 	
 	}
+	
+	public static int maximaNota(int[] notas) {
+        int max = Integer.MIN_VALUE;
+        for (int nota : notas) {
+        	if (nota < 0 || nota > 10) {
+	            throw new IllegalArgumentException("Las notas deben estar entre 0 y 10");
+	    }
+            if (nota > max) {
+                max = nota;
+            }
+        }
+        return max;
+    }
 }
