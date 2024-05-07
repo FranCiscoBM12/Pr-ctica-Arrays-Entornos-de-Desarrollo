@@ -22,11 +22,19 @@ class testMedia {
     	float mediaObtenida=MisArrays.mediaNotas(notasValidas);
     	assertEquals(mediaEsperada,mediaObtenida);
     }
+   
     @Test
-    public void testMediaNotasInvalidas() {
-    	float mediaEsperada=7;
-    	float mediaObtenida=MisArrays.mediaNotas(notasInvalidas);
-    	assertEquals(mediaEsperada,mediaObtenida);
-    }
+	void mediaParamIncorrecto() {
+		//IllegalArgumentException
+		//NumberFormatException
+		Exception excepcion=assertThrows(IllegalArgumentException.class,
+				() -> MisArrays.mediaNotas(notasInvalidas));
+		
+		String esperado="Las notas deben estar entre 0 y 10";
+		String obtenido=excepcion.getMessage();
+		assertEquals(esperado,obtenido);
+	
+	
+	}
 
 }

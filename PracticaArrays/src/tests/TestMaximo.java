@@ -26,11 +26,19 @@ class TestMaximo {
 	    	float maximoObtenida=MisArrays.maximaNota(notasValidas);
 	    	assertEquals(maximoEsperada,maximoObtenida);
 	    }
+	  
 	    @Test
-	    public void testMaximoInvalido() {
-	    	float maximoEsperada=11;
-	    	float maximoObtenida=MisArrays.medianaNotas(notasInvalidas);
-	    	assertEquals(maximoEsperada,maximoObtenida);
-	    }
+		void maximoParamIncorrecto() {
+			//IllegalArgumentException
+			//NumberFormatException
+			Exception excepcion=assertThrows(IllegalArgumentException.class,
+					() -> MisArrays.maximaNota(notasInvalidas));
+			
+			String esperado="Las notas deben estar entre 0 y 10";
+			String obtenido=excepcion.getMessage();
+			assertEquals(esperado,obtenido);
+		
+		
+		}
 
 }

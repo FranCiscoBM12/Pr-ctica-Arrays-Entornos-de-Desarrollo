@@ -25,10 +25,18 @@ class TestMinimo {
 	    	int minimoObtenida=MisArrays.minimaNota(notasValidas);
 	    	assertEquals(minimoEsperada,minimoObtenida);
 	    }
+	  
 	    @Test
-	    public void testMaximoInvalido() {
-	    	int minimoEsperada=6;
-	    	int minimoObtenida=MisArrays.minimaNota(notasInvalidas);
-	    	assertEquals(minimoEsperada,minimoObtenida);
-	    }
+		void minimoParamIncorrecto() {
+			//IllegalArgumentException
+			//NumberFormatException
+			Exception excepcion=assertThrows(IllegalArgumentException.class,
+					() -> MisArrays.minimaNota(notasInvalidas));
+			
+			String esperado="Las notas deben estar entre 0 y 10";
+			String obtenido=excepcion.getMessage();
+			assertEquals(esperado,obtenido);
+		
+		
+		}
 }

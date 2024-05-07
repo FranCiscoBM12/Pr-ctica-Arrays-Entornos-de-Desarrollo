@@ -24,11 +24,19 @@ class TestMediana {
 	    	float medianaObtenida=MisArrays.medianaNotas(notasValidas);
 	    	assertEquals(medianaEsperada,medianaObtenida);
 	    }
+	    
 	    @Test
-	    public void testMedianaInvalida() {
-	    	float medianaEsperada=8;
-	    	float medianaObtenida=MisArrays.medianaNotas(notasInvalidas);
-	    	assertEquals(medianaEsperada,medianaObtenida);
-	    }
+		void medianaParamIncorrecto() {
+			//IllegalArgumentException
+			//NumberFormatException
+			Exception excepcion=assertThrows(IllegalArgumentException.class,
+					() -> MisArrays.medianaNotas(notasInvalidas));
+			
+			String esperado="Las notas deben estar entre 0 y 10";
+			String obtenido=excepcion.getMessage();
+			assertEquals(esperado,obtenido);
+		
+		
+		}
 
 }
